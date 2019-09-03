@@ -39,12 +39,12 @@ app.post('/create', (req, res) => {
 })
 
 app.get('/:key', (req, res) => {
-  if(!req.query.key) {
+  if(!req.params.key) {
     res.status(400).json({'error': 'Missing key'})
     return
   }
 
-  const key = datastore.key(['link', req.query.key])
+  const key = datastore.key(['link', req.params.key])
 
   datastore.get(key, (err, entity) => {
     if(err) {
@@ -59,3 +59,12 @@ app.get('/:key', (req, res) => {
     res.redirect(entity['url'])
   })
 })
+
+const PORT = process.env.PORT || 8080
+
+app.listen(PORT, () => {
+  console.log(`App listening on port ${PORT}`)
+  console.log('Press Ctrl+C to quit.')
+})
+
+module.exports = app
