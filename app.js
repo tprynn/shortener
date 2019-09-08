@@ -18,7 +18,7 @@ app.post('/create', (req, res) => {
     return
   }
 
-  const datastore_key = datastore.key(['link', req.query.key])
+  const datastore_key = datastore.key(['link', req.query.key.toLowerCase()])
 
   datastore.save(
     {
@@ -44,7 +44,7 @@ app.get('/:key', (req, res) => {
     return
   }
 
-  const key = datastore.key(['link', req.params.key])
+  const key = datastore.key(['link', req.params.key.toLowerCase()])
 
   datastore.get(key, (err, entity) => {
     if(err) {
