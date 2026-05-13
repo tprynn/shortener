@@ -2,7 +2,7 @@
   "name": "shortener",
   "version": "0.0.2",
   "dependencies": {
-    "@google-cloud/datastore": "^8.2.2",
+    "@google-cloud/datastore": "^10.1.0",
     "express": "^4.22.2"
   },
   "scripts": {
